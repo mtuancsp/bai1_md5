@@ -46,31 +46,31 @@ export function CreateStudent() {
                 onSubmit={handleSubmit}
             >
                 <Form>
-                    <label>Name</label>
+                    <label>Name</label><br/>
                     <Field type="text" name="name"/>
                     <ErrorMessage name="name">
                         {errorMsg => <span className="error-message">{errorMsg}</span>}
-                    </ErrorMessage><br/>
+                    </ErrorMessage><br/><br/>
 
-                    <label>Score</label>
+                    <label>Score</label><br/>
                     <Field type="text" name="score"/>
                     <ErrorMessage name="score">
                         {errorMsg => <span className="error-message">{errorMsg}</span>}
-                    </ErrorMessage><br/>
+                    </ErrorMessage><br/><br/>
 
-                    <label>Description</label>
+                    <label>Description</label><br/>
                     <Field type="text" name="description"/>
                     <ErrorMessage name="description">
                         {errorMsg => <span className="error-message">{errorMsg}</span>}
-                    </ErrorMessage><br/>
+                    </ErrorMessage><br/><br/>
 
-                    <label>Action</label>
+                    <label>Action</label><br/>
                     <Field type="text" name="action"/>
                     <ErrorMessage name="action">
                         {errorMsg => <span className="error-message">{errorMsg}</span>}
-                    </ErrorMessage><br/>
+                    </ErrorMessage><br/><br/>
 
-                    <button type="submit">Submit</button>
+                    <button className="btn-primary" type="submit">Submit</button>
                 </Form>
 
             </Formik>

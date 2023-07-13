@@ -26,7 +26,7 @@ export default function HomePage() {
                 <div style={{ flex: 3}}>
                     <div style={{width: "fit-content", margin: "auto"}}>
                         <Link to={"/"}>List Students</Link>&nbsp;|&nbsp;
-                        <Link to={"/create"}>Add Students</Link>
+                        <Link to={"/home/create"}>Add Students</Link>
                         <Outlet searchValue={searchValue}></Outlet>
                     </div>
                 </div>

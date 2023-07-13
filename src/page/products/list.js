@@ -50,14 +50,14 @@ export function ListProduct() {
     return (
         <div>
             <h1>List Students</h1>
-            <div>
-                <input
-                    type="text"
-                    value={searchParams}
-                    onChange={handleSearch}
-                    placeholder="Search by name"
-                />
-            </div>
+            {/*<div>*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        value={searchParams}*/}
+            {/*        onChange={handleSearch}*/}
+            {/*        placeholder="Search by name"*/}
+            {/*    />*/}
+            {/*</div>*/}
             <br />
             <table border={1}>
                 <thead>
@@ -79,7 +79,7 @@ export function ListProduct() {
                             <td>{product.model}</td>
                             <td>{product.price}</td>
                             <td>
-                                <Link to={"/edit/" + product.id}>Edit</Link>
+                                <Link to={"edit/" + product.id}>Edit</Link>
                             </td>
                             <td>
                                 <button className="btn btn-danger" onClick={() => window.confirm("Are you sure you want to delete this product?") && deleteStudent(product.id)}>

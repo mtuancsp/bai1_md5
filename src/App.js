@@ -25,6 +25,8 @@ import {ListStudent} from "./page/students/list";
 import {CreateStudent} from "./page/students/create";
 import {EditStudent} from "./page/students/edit";
 import AnotherComponent from "./components/test";
+import {CreateProduct} from "./page/products/create";
+import {EditProduct} from "./page/products/edit";
 
 function App() {
 
@@ -48,8 +50,8 @@ function App() {
             <Routes>
                 <Route path="/home" element={<HomePage/>}>
                     <Route path="" element={<ListProduct/>}/>
-                    {/*<Route path="create" element={<CreateStudent/>}/>*/}
-                    {/*<Route path="edit/:id" element={<EditStudent/>}/>*/}
+                    <Route path="create" element={<CreateProduct/>}/>
+                    <Route path="edit/:id" element={<EditProduct/>}/>
                 </Route>
                 <Route path="/admin" element={<AdminPage/>}></Route>
                 <Route path="/" element={<Login/>}></Route>

@@ -22,8 +22,8 @@ export default function Navbar() {
                 <div className="row">
                     <div className="col-sm-6">
                         <h1>
-                            <Link to="/">Index</Link>&nbsp;|&nbsp;
-                            <Link to="/admin">Admin</Link>&nbsp;|&nbsp;
+                            <Link to="/">Home</Link>&nbsp;|&nbsp;
+                            <Link to="/admin">Admin</Link>
                         </h1>
                     </div>
 
@@ -35,8 +35,8 @@ export default function Navbar() {
                                 placeholder="Search"
                                 value={searchValue}
                                 onChange={handleInputChange}
-                            />&nbsp;|&nbsp;
-                            <Link style={{fontSize: "20px"}} to="#">{userState.email}</Link>&nbsp;|&nbsp;
+                            />&nbsp; &nbsp;
+                            <Link style={{fontSize: "20px"}} to="#">{userState.email}</Link>&nbsp; &nbsp;
                             <button className="btn btn-danger" onClick={() => {
                                 dispatch(logout());
                                 navigate("/")

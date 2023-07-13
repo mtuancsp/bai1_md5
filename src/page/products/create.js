@@ -1,7 +1,6 @@
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import axios from "axios";
 import * as Yup from "yup";
-import './form.css';
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
@@ -13,55 +12,72 @@ export const validateProduct = Yup.object().shape({
         .required('Required'),
     price: Yup.number()
         .min(0, 'Must > 0!')
-        .max(10, 'Must < 10!')
+        .max(10000, 'Too Expensive!')
         .required('Required')
 });
 
-export function CreateStudent() {
+export function CreateProduct() {
     const navigate = useNavigate();
     const [producers, setProducers] = useState([]);
+    const token = "Bearer " + localStorage.getItem("token");
 
     useEffect(() => {
-        axios.get("http://localhost:3001/producers")
+        axios.get("http://localhost:8080/producers/list", {
+            headers: {
+                Authorization: token,
+            },
+        })
             .then((res) => {
                 setProducers(res.data);});
     }
     , []);
+
     const handleSubmit = (data) => {
         axios
-            .post("http://localhost:3001/students", data)
+            .post("http://localhost:8080/smartphones", data, {
+                headers: {
+                    Authorization: token,
+                },
+            })
             .then((res) => {
+                console.log(data);
                 navigate("/");
             });
     };
 
     return (
         <>
-            <h1>Create Producer</h1>
+            <h1>Create Product</h1>
             <Formik
                 initialValues={
-                    {producer: {}, model: '', price: ''}
+                    {producer: {id: 1}, model: '', price: 0}
                 }
                 validationSchema={validateProduct}
                 onSubmit={handleSubmit}
             >
                 <Form>
-                    <Field as="select" name="producer">
-                        <option value="">Select a producer</option>
+                    <label>Producer</label><br/>
+                    <Field as="select" name="producer.id">
                         {producers.map((producer) => (
-                            <option key={producer.id} value={producer}>
+                            <option key={producer.id} value={producer.id}>
                                 {producer.name}
                             </option>
                         ))}
-                    </Field>
-
-                    <label>Score</label>
-                    <Field type="text" name="score"/>
-                    <ErrorMessage name="score">
+                    </Field><br/>
+                    <br/>
+                    <label>Model</label><br/>
+                    <Field type="text" name="model"/>
+                    <ErrorMessage name="model">
                         {errorMsg => <span className="error-message">{errorMsg}</span>}
                     </ErrorMessage><br/>
+                    <br/>
+                    <label>Price</label><br/>
+                    <Field type="number" name="price"/>
+                    <ErrorMessage name="price">
+                        {errorMsg => <span className="error-message">{errorMsg}</span>}
+                    </ErrorMessage><br/><br/>
 
-                    <button type="submit">Submit</button>
+                    <button className="btn-primary" type="submit">Submit</button>
                 </Form>
 
             </Formik>

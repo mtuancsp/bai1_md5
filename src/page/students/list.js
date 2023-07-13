@@ -69,7 +69,7 @@ export function ListStudent() {
                             <td>{student.description}</td>
                             <td>{student.action}</td>
                             <td>
-                                <Link to={"/edit/" + student.id}>Edit</Link>
+                                <Link to={"edit/" + student.id}>Edit</Link>
                             </td>
                             <td>
                                 <button onClick={() => window.confirm("Are you sure you want to delete this student?") && deleteStudent(student.id)}>
